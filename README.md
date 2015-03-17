@@ -24,6 +24,7 @@ freetests.py is LICENSE'D under a BSD-like license:
 From ws4py
 
 Copyright (c) 2011-2014, Sylvain Hellegouarch, Abram Hindle
+Copyright (c) 2015, Jake Brand
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -49,3 +50,16 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
+
+Contributions:
+Jake Brand
+Chris Pavelicek
+Simon Fessehaye
+Marcus Karpoff
+
+Bergi:
+http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript
+Abram Hindle:
+github.com/abramhindle/WebSocketsExamples/blob/master/broadcaster.py
+Jake Brand:
+https://github.com/JakeBrand/CMPUT404-assignment-ajax/blob/master/static/index.html

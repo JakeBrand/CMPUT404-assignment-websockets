@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 # Copyright (c) 2013-2014 Abram Hindle
+# Copyright (c) 2015 Jake Brand
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -30,7 +31,6 @@ app.debug = True
 class World:
     def __init__(self):
         self.clear()
-        # we've got listeners now!
         self.listeners = list()
 
     def add_set_listener(self, listener):
@@ -112,23 +112,9 @@ def read_ws(ws, client):
             msg = ws.receive()
             if(msg is not None):
                 msg = json.loads(msg)
-                # if entity is named in the keys
-                # obj = { "x12" : {"x": 2, "y": 898}}
-                # obj["x12"]
                 for key in msg:
                     value = msg[key]
                     myWorld.set(key, value)
-                # if "entity" in msg.keys():
-                #     print("entity "+msg.keys())
-                #     myWorld.set(msg["entity"], msg["data"])
-                #     # counter = counter +1
-                #     sendall_json(msg)
-                # # if entity is not named in the keys
-                # else:
-                #     print("no entity "+msg.keys()[0])
-                #     key = msg.keys()[0]
-                #     value = msg[key]
-                    # sendall_json(msg)
             else:
                 break
     except Exception as e:
@@ -144,21 +130,17 @@ def subscribe_socket(ws):
     client = Client()
     clients.append(client)
     g = gevent.spawn(read_ws, ws, client)
-    print("Subscribing xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
     try:
         while True:
             # block here
             msg = client.get()
-            print(msg)
             ws.send(msg)
-    except Exception as e:  # WebSocketError as e
+    except Exception as e:
         print("WE Error %s" % e)
     finally:
         clients.remove(client)
         gevent.kill(g)
 
-
-#               ### Works from here down ############################
 def flask_post_json():
     '''Ah the joys of frameworks! They do so much work for you
        that they get in the way of sane operation!'''
